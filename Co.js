@@ -1,46 +1,43 @@
 import React, { useState } from 'react';
 
 const Co = () => {
-  const [kg, setKg] = useState('');
-  const [pounds, setPounds] = useState('');
-  const [grams, setGrams] = useState('');
+  const [kg, setKg] = useState(0);
+  const [pounds, setPounds] = useState(0);
+  const [grams, setGrams] = useState(0);
 
   const handleKgChange = (value) => {
-    const numericValue = parseFloat(value);
-    if (!isNaN(numericValue)) {
+    if (!isNaN(value)) {
       setKg(value);
-      setPounds((numericValue * 2.20462).toString());
-      setGrams((numericValue * 1000).toString());
+      setPounds((value * 2.20462));
+      setGrams((value * 1000));
     } else {
-      setKg('');
-      setPounds('');
-      setGrams('');
+      setKg(0);
+      setPounds(0);
+      setGrams(0);
     }
   };
 
   const handlePoundsChange = (value) => {
-    const numericValue = parseFloat(value);
-    if (!isNaN(numericValue)) {
+    if (!isNaN(value)) {
       setPounds(value);
-      setKg((numericValue / 2.20462).toString());
-      setGrams(((numericValue / 2.20462) * 1000).toString());
+      setKg((value / 2.20462));
+      setGrams(((value / 2.20462) * 1000));
     } else {
-      setKg('');
-      setPounds('');
-      setGrams('');
+      setKg(0);
+      setPounds(0);
+      setGrams(0);
     }
   };
 
   const handleGramsChange = (value) => {
-    const numericValue = parseFloat(value);
-    if (!isNaN(numericValue)) {
+    if (!isNaN(value)) {
       setGrams(value);
-      setKg((numericValue / 1000).toString());
-      setPounds((numericValue / 1000 * 2.20462).toString());
+      setKg((value / 1000));
+      setPounds((value / 1000 * 2.20462));
     } else {
-      setKg('');
-      setPounds('');
-      setGrams('');
+      setKg(0);
+      setPounds(0);
+      setGrams(0);
     }
   };
 
@@ -48,15 +45,15 @@ const Co = () => {
     <div className="input">
       <b>KG: </b>
       <input
-        type="text"B 
+        type="number"
         value={kg}
         onChange={(e) => handleKgChange(e.target.value)}
         id="text-box"
       />
-      <p>{'\t'} = </p>
+      <p> = </p>
       <b>Pounds: </b>
       <input
-        type="text"
+        type="number"
         value={pounds}
         onChange={(e) => handlePoundsChange(e.target.value)}
         id="text-box"
@@ -64,7 +61,7 @@ const Co = () => {
       <p> = </p>
       <b>Grams: </b>
       <input
-        type="text"
+        type="number"
         value={grams}
         onChange={(e) => handleGramsChange(e.target.value)}
         id="text-box"
